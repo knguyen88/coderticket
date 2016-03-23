@@ -4,7 +4,7 @@
 
 Submitted by: **Kha Nguyen**
 
-Time spent: **1** hours
+Time spent: **2** hours
 
 URL: **Insert your Heroku URL here**
 
@@ -27,7 +27,7 @@ The following **required** functionality is complete:
 
 * [x] Each event can have multiple types of tickets, each with a different `price` and `max_quantity`. 
 * [ ] Users can buy tickets to an event, choose the types of tickets, and the quantity of tickets.
-* [ ] Users cannot buy more tickets than the quantity available.
+* [ ] Users cannot buy more tickets than the quantity available. **HINT**: Good candidate for a test.
 * [ ] Users can only buy up to 10 of a ticket type at a time.
 * [ ] Users cannot buy tickets to events that occur in the past. 
 
@@ -38,19 +38,19 @@ The following **required** functionality is complete:
 * [ ] Users can create events. 
 * [ ] Users must click "publish event" before an event becomes viewable to other users. 
 * [ ] Users can create ticket types for that event. 
-* [ ] Users can create venues.
-* [ ] An event must have at least one `ticket_type` defined before it can be published. 
+* [x] Users can create venues.
+* [ ] An event must have at least one `ticket_type` defined before it can be published. **HINT**: This is a good candidate for a unit test.
 * [ ] User can see a list of events he or she has created.
-* [ ] Users can edit their event after creation. But only the user who created the event can edit the event. 
+* [ ] Users can edit their event after creation. But only the user who created the event can edit the event. **HINT**: This is a good candidate for a controller test.
 
 ### Optional Stories
 
-* [ ] Users can log in with Facebook.
+* [a] Users can log in with Facebook.
 * [ ] Users receive an email when they have purchased a ticket.
-* [ ] Users can see "related events" when browsing an event. Related events should belong to the same category and be in the same region.
-* [ ] User A can allow User B to edit User A's event. In other words, an event owner can assign other people to be "event admins". 
-* [ ] Ticket types have an optional "minimum" purchase quantity. ([Example Screenshot](http://i.imgur.com/DOYtAR0.png))
-* [ ] Events are automatically labeled as "Hot". "Hot" events should have a red border or some sort of visual flourish. The event title should also be prefixed with "**HOT:**".
+* [a] Users can see "related events" when browsing an event. Related events should belong to the same category and be in the same region.
+* [ ] User A can allow User B to edit User A's event. In other words, an event owner can assign other people to be "event admins".
+* [a] Ticket types have an optional "minimum" purchase quantity. ([Example Screenshot](http://i.imgur.com/DOYtAR0.png))
+* [a] Events are automatically labeled as "Hot". "Hot" events should have a red border or some sort of visual flourish. The event title should also be prefixed with "**HOT:**".
 * [ ] Instead of showing all of the events on the main page, an "admin" user can dictate the events that show up on the main page.
 
 ## Notes
