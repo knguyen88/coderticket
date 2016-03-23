@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: CoderTicket_test
+  database: coderticket_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: CoderTicket_production
-  username: CoderTicket
+  database: coderticket_production
+  username: coderticket
   password: <%= ENV['CODERTCKET_DATABASE_PASSWORD'] %>

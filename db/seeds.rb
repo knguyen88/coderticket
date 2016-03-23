@@ -1,6 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
+TicketType.delete_all
+Event.delete_all
+Category.delete_all
+Venue.delete_all
+Region.delete_all
+User.delete_all
 
 # Create Regions
 ['Ho Chi Minh', 'Ha Noi', 'Binh Thuan', 'Da Nang', 'Lam Dong'].each do |r|
@@ -158,3 +161,10 @@ e = Event.create({
   DESC
 })  
 e.ticket_types << TicketType.create(name: 'General', price: 99000, max_quantity: 1000)
+
+5.times do |index|
+  User.create(name: "User #{index}",
+              email: "user#{index}@test.test",
+              password: 'password',
+              password_confirmation: 'password')
+end

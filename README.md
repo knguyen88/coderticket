@@ -1,10 +1,10 @@
-# Homework 3 - *Name of App*
+# Homework 3 - *Coderticket*
 
-**Name of your app** is a Ruby on Rails blog application that allows users to create and buy tickets to cool events. 
+**Coderticket** is a Ruby on Rails blog application that allows users to create and buy tickets to cool events.
 
-Submitted by: **Your Name Here**
+Submitted by: **Kha Nguyen**
 
-Time spent: **X** hours
+Time spent: **1** hours
 
 URL: **Insert your Heroku URL here**
 
@@ -33,8 +33,8 @@ The following **required** functionality is complete:
 
 #### Users
 
-* [ ] User can sign up by providing their email, password, and name. 
-* [ ] User can login using an email and password. 
+* [x] User can sign up by providing their email, password, and name.
+* [x] User can login using an email and password.
 * [ ] Users can create events. 
 * [ ] Users must click "publish event" before an event becomes viewable to other users. 
 * [ ] Users can create ticket types for that event. 
