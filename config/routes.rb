@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :tickets
+    collection do
+      get 'my_events', to: 'events#my_events'
+    end
   end
 
   get '/login', to: 'users#show_login_form'

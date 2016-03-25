@@ -23,7 +23,15 @@ dalat = Venue.create({
   region: Region.find_by(name: 'Lam Dong')
 })
 
+5.times do |index|
+  User.create(name: "User #{index}",
+              email: "user#{index}@test.test",
+              password: 'password',
+              password_confirmation: 'password')
+end
+
 e = Event.create({
+  creator: User.find_by_name('User 1'),
   name: 'Việt Nam Thử Thách Chiến Thắng', 
   starts_at: DateTime.parse('Fri, 11 Mar 2016 7:00 AM+0700'),
   ends_at: DateTime.parse('Sun, 13 Mar 2016 3:00 PM+0700'),
@@ -46,12 +54,14 @@ e.ticket_types << TicketType.create(name: 'Việt Nam Thử Thách Chiến Thắ
 # Second event:
 # Dan Truong
 dan_venue = Venue.create({
+  creator: User.find_by_name('User 1'),
   name: 'Sân vận động quân khu 7',
   full_address: '202 Hoàng Văn Thụ, Quận Tân Bình, Hồ Chí Minh',
   region: Region.find_by(name: 'Ho Chi Minh')
 })
 
 e = Event.create({
+  creator: User.find_by_name('User 2'),
   name: 'Cảm ơn Đời - Live Concert Đan Trường', 
   venue: dan_venue,
   category: Category.find_by(name: 'Entertainment'),
@@ -129,12 +139,14 @@ e.ticket_types << TicketType.create(name: 'Vé loại D', price: 150000, max_qua
 # Third event - Merry Christmas Never Alone
 
 gap = Venue.create({
+  creator: User.find_by_name('User 3'),
   name: 'Gap Yolo Hanoi',
   full_address: '1B Quốc Tử Giám, Quận Đống Đa, Hà Nội',
   region: Region.find_by(name: 'Ha Noi')
   })
 
 e = Event.create({
+  creator: User.find_by_name('User 1'),
   name: 'Merry Christmas Never Alone',
   starts_at: DateTime.parse('Thu, 24 Dec 2015, 8:00 PM+0700'),
   ends_at: DateTime.parse('Thu, 24 Dec 2015, 11:00 PM+0700'),
@@ -161,10 +173,3 @@ e = Event.create({
   DESC
 })  
 e.ticket_types << TicketType.create(name: 'General', price: 99000, max_quantity: 1000)
-
-5.times do |index|
-  User.create(name: "User #{index}",
-              email: "user#{index}@test.test",
-              password: 'password',
-              password_confirmation: 'password')
-end
