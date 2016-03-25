@@ -5,6 +5,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @related_events = Event.joins(:category).joins(:venue).joins('inner join regions on regions.id = venues.region_id')
+                          .where('regions.id = ? and categories.id = ?', @event.venue.region_id, @event.category.id)
   end
 
   def new
@@ -14,7 +16,7 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    @events = Event.where()
+    @events = current_user.managing_events
   end
 
   def create
@@ -32,8 +34,8 @@ class EventsController < ApplicationController
 
   def create_new_event
     new_event = Event.create(event_params)
-    event_admins = [{admin_id: current_user.id, event_id: new_event.id}]
-    params[:event][:admins].each do |user_id|
+    event_admins = []
+    params[:event][:admins].try(:each) do |user_id|
       event_admins << {admin_id: user_id, event_id: new_event.id}
     end
     EventAdmin.create(event_admins)

@@ -4,7 +4,7 @@
 
 Submitted by: **Kha Nguyen**
 
-Time spent: **3** hours
+Time spent: **4.5** hours
 
 URL: **Insert your Heroku URL here**
 
@@ -40,15 +40,15 @@ The following **required** functionality is complete:
 * [ ] Users can create ticket types for that event. 
 * [x] Users can create venues.
 * [ ] An event must have at least one `ticket_type` defined before it can be published. **HINT**: This is a good candidate for a unit test.
-* [ ] User can see a list of events he or she has created.
+* [x] User can see a list of events he or she has created.
 * [ ] Users can edit their event after creation. But only the user who created the event can edit the event. **HINT**: This is a good candidate for a controller test.
 
 ### Optional Stories
 
 * [ ] Users can log in with Facebook.
 * [ ] Users receive an email when they have purchased a ticket.
-* [a] Users can see "related events" when browsing an event. Related events should belong to the same category and be in the same region.
-* [a] User A can allow User B to edit User A's event. In other words, an event owner can assign other people to be "event admins".
+* [x] Users can see "related events" when browsing an event. Related events should belong to the same category and be in the same region.
+* [x] User A can allow User B to edit User A's event. In other words, an event owner can assign other people to be "event admins".
 * [a] Ticket types have an optional "minimum" purchase quantity. ([Example Screenshot](http://i.imgur.com/DOYtAR0.png))
 * [ ] Events are automatically labeled as "Hot". "Hot" events should have a red border or some sort of visual flourish. The event title should also be prefixed with "**HOT:**".
 * [ ] Instead of showing all of the events on the main page, an "admin" user can dictate the events that show up on the main page.
