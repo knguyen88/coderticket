@@ -23,7 +23,7 @@
       </div>
       <div class="form-group">
         <label for="event[hero_image_url]">Image</label>
-        <input type="text" class="form-control" id="event[hero_image_url]" name="event[hero_image_url]" placeholder="www.google.com"/>
+        <input type="text" class="form-control" id="event[hero_image_url]" name="event[hero_image_url]" placeholder="www.google.com" value="https://az810747.vo.msecnd.net/eventcover/2015/10/25/C6A1A5.jpg?w=1040&maxheight=400&mode=crop&anchor=topcenter"/>
       </div>
       <div class="form-group">
         <label for="event[venue_id]">Venue</label>
@@ -40,6 +40,14 @@
       <div class="form-group">
         <label for="event[ends_at]">End</label>
         <input type="date" class="form-control" id="event[ends_at]" name="event[ends_at]"/>
+      </div>
+      <div class="form-group">
+        <label for="event[admins]">Venue</label>
+        <select id="event[admins]" name="event[admins][]" class="form-control" multiple>
+          <% @admins.each do |admin| %>
+              <option value="<%= admin.id %>"><%= admin.name %></option>
+          <% end %>
+        </select>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>

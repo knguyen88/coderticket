@@ -1,3 +1,4 @@
+EventAdmin.delete_all
 TicketType.delete_all
 Event.delete_all
 Category.delete_all
@@ -54,7 +55,6 @@ e.ticket_types << TicketType.create(name: 'Việt Nam Thử Thách Chiến Thắ
 # Second event:
 # Dan Truong
 dan_venue = Venue.create({
-  creator: User.find_by_name('User 1'),
   name: 'Sân vận động quân khu 7',
   full_address: '202 Hoàng Văn Thụ, Quận Tân Bình, Hồ Chí Minh',
   region: Region.find_by(name: 'Ho Chi Minh')
@@ -139,7 +139,6 @@ e.ticket_types << TicketType.create(name: 'Vé loại D', price: 150000, max_qua
 # Third event - Merry Christmas Never Alone
 
 gap = Venue.create({
-  creator: User.find_by_name('User 3'),
   name: 'Gap Yolo Hanoi',
   full_address: '1B Quốc Tử Giám, Quận Đống Đa, Hà Nội',
   region: Region.find_by(name: 'Ha Noi')
