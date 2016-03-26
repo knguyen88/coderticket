@@ -16,6 +16,10 @@ class Event < ActiveRecord::Base
     published
   end
 
+  def outdated?
+    starts_at < Date.today
+  end
+
   def can_publish?
     !published? && ticket_types.count > 0
   end

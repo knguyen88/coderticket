@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   root 'events#index'
 
   resources :events do
-    resources :tickets
+    resources :tickets do
+      collection do
+        post 'buy', to: 'tickets#buy'
+      end
+    end
     collection do
       get 'my_events', to: 'events#my_events'
       post ':id', to: 'events#update'

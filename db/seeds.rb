@@ -171,4 +171,4 @@ e = Event.create({
                         
   DESC
 })  
-e.ticket_types << TicketType.create(name: 'General', price: 99000, max_quantity: 1000, min_quantity: 20)
+e.ticket_types << TicketType.create(name: 'General', price: 99000, max_quantity: 1000, min_quantity: 5)
