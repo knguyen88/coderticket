@@ -4,7 +4,7 @@
 
 Submitted by: **Kha Nguyen**
 
-Time spent: **8** hours
+Time spent: **10** hours
 
 URL: **https://radiant-temple-24611.herokuapp.com**
 

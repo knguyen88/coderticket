@@ -6,15 +6,18 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :authenticated?
 
   def require_login
-    redirect_to login_path unless authenticated?
+    unless authenticated?
+      flash[:error] = 'You must log in first'
+      redirect_to login_path
+    end
   end
 
   def skip_login
-    redirect_to inbox_path if authenticated?
+    redirect_to events_path if authenticated?
   end
 
   def authenticated?
-    !!current_user
+    current_user.present?
   end
 
   def current_user

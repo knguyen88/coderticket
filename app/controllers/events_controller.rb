@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
   include EventsHelper
 
+  before_action :require_login, only: [:new, :my_events, :edit, :update, :publish]
   before_action :load_data_for_event_form, only: [:new, :edit]
+  before_action :find_event, only: [:show, :edit, :publish]
 
   def index
     @events = Event.where('starts_at >= ? and published = true', Date.today).order(starts_at: 'desc')
@@ -11,7 +13,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     @related_events = Event
                           .joins(:category)
                           .joins(:venue)
@@ -33,7 +34,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
     redirect_to(my_events_events_path) unless can_edit?(@event)
   end
 
@@ -43,7 +43,6 @@ class EventsController < ApplicationController
   end
 
   def publish
-    @event = Event.find(params[:id])
     if can_edit?(@event)
       if params[:event][:publish] == 'true'
         if @event.can_publish?
@@ -66,6 +65,10 @@ class EventsController < ApplicationController
   end
 
   private
+  def find_event
+    @event = Event.find(params[:id])
+  end
+
   def event_params
     params
         .require(:event)

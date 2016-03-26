@@ -10,6 +10,6 @@ module EventsHelper
   end
 
   def can_edit?(event)
-    event.admins.ids.include?(current_user.id)
+    authenticated? && event.admins.ids.include?(current_user.id)
   end
 end

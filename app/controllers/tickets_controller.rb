@@ -1,6 +1,9 @@
 class TicketsController < ApplicationController
+
+  before_action :require_login, only: [:new, :create]
+  before_action :find_event, only: [:new, :buy]
+
   def new
-    @event = Event.find(params[:event_id])
   end
 
   def create
@@ -12,7 +15,6 @@ class TicketsController < ApplicationController
   end
 
   def buy
-    @event = Event.find(params[:event_id])
     if @event.outdated?
       flash[:error] = 'This event has expired. You cannot buy its ticket'
       redirect_to(event_path(event))
@@ -24,6 +26,11 @@ class TicketsController < ApplicationController
   end
 
   private
+
+  def find_event
+    @event = Event.find(params[:event_id])
+  end
+
   def ticket_params
     params
         .require(:ticket)

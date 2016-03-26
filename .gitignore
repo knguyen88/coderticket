@@ -19,3 +19,5 @@
 .idea
 *.iml
 coderticket_development
+
+coverage

@@ -1,5 +1,7 @@
 class VenuesController < ApplicationController
 
+  before_action :require_login
+
   def show_venues_list
     @venues = Venue.all
   end
