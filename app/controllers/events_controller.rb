@@ -4,13 +4,13 @@ class EventsController < ApplicationController
   before_action :load_data_for_event_form, only: [:new, :edit]
 
   def index
-    @events = Event.where('starts_at >= ?', Date.today)
+    @events = Event.where('starts_at >= ? and published = true', Date.today)
   end
 
   def show
     @event = Event.find(params[:id])
     @related_events = Event.joins(:category).joins(:venue).joins('inner join regions on regions.id = venues.region_id')
-                          .where('regions.id = ? and categories.id = ?', @event.venue.region_id, @event.category.id)
+                          .where('events.id <> ? and regions.id = ? and categories.id = ?', @event.id, @event.venue.region_id, @event.category.id)
   end
 
   def new
@@ -34,6 +34,29 @@ class EventsController < ApplicationController
   def update
     update_event
     redirect_to event_path(params[:id])
+  end
+
+  def publish
+    @event = Event.find(params[:id])
+    if can_edit?(@event)
+      if params[:event][:publish] == 'true'
+        if @event.can_publish?
+          @event.published = true
+          @event.save
+          flash[:success] = 'Your event has been published'
+        else
+          flash[:error] = 'Your event needs at least 1 ticket type before it can be published'
+        end
+      elsif params[:event][:publish] == 'false'
+        @event.published = false
+        @event.save
+        flash[:success] = 'Your event has been unpublished'
+      end
+      redirect_to(edit_event_path(@event))
+    else
+      flash[:error] = 'You do not have permission to edit this event'
+      redirect_to(event_path(@event))
+    end
   end
 
   private

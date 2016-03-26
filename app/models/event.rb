@@ -12,6 +12,14 @@ class Event < ActiveRecord::Base
   validates_presence_of :extended_html_description, :venue, :category, :starts_at
   validates_uniqueness_of :name, uniqueness: {scope: [:venue, :starts_at]}
 
+  def published?
+    published
+  end
+
+  def can_publish?
+    !published? && ticket_types.count > 0
+  end
+
   private
   def add_creator_as_admin
     EventAdmin.create({admin_id: creator_id, event_id: id})

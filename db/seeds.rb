@@ -48,8 +48,8 @@ e = Event.create({
     <p style="text-align:center"><span style="font-size:16px"><strong><span style="background-color:transparent; color:rgb(0, 0, 0)">www.vietnamvictorychallenge.com. </span></strong></span></p>
   DESC
 })
-e.ticket_types << TicketType.create(name: '2016 Việt Nam Thử Thách Chiến Thắng dành cho những tay đua đăng kí sớm.', price: 500000, max_quantity: 95)
-e.ticket_types << TicketType.create(name: 'Việt Nam Thử Thách Chiến Thắng ( Giá chính thức)', price: 2000000, max_quantity: 5)
+e.ticket_types << TicketType.create(name: '2016 Việt Nam Thử Thách Chiến Thắng dành cho những tay đua đăng kí sớm.', price: 500000, max_quantity: 95, min_quantity: 2)
+e.ticket_types << TicketType.create(name: 'Việt Nam Thử Thách Chiến Thắng ( Giá chính thức)', price: 2000000, max_quantity: 5, min_quantity: 5)
 
 
 # Second event:
@@ -131,10 +131,10 @@ e = Event.create({
 })
 
 
-e.ticket_types << TicketType.create(name: 'Vé loại A', price: 500000, max_quantity: 10)
-e.ticket_types << TicketType.create(name: 'Vé loại B', price: 300000, max_quantity: 50)
-e.ticket_types << TicketType.create(name: 'Vé loại C', price: 200000, max_quantity: 100)
-e.ticket_types << TicketType.create(name: 'Vé loại D', price: 150000, max_quantity: 200)
+e.ticket_types << TicketType.create(name: 'Vé loại A', price: 500000, max_quantity: 10, min_quantity: 2)
+e.ticket_types << TicketType.create(name: 'Vé loại B', price: 300000, max_quantity: 50, min_quantity: 2)
+e.ticket_types << TicketType.create(name: 'Vé loại C', price: 200000, max_quantity: 100, min_quantity: 2)
+e.ticket_types << TicketType.create(name: 'Vé loại D', price: 150000, max_quantity: 200, min_quantity: 2)
 
 # Third event - Merry Christmas Never Alone
 
@@ -171,4 +171,4 @@ e = Event.create({
                         
   DESC
 })  
-e.ticket_types << TicketType.create(name: 'General', price: 99000, max_quantity: 1000)
+e.ticket_types << TicketType.create(name: 'General', price: 99000, max_quantity: 1000, min_quantity: 20)

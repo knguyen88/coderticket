@@ -4,9 +4,9 @@
 
 Submitted by: **Kha Nguyen**
 
-Time spent: **6** hours
+Time spent: **6.5** hours
 
-URL: **Insert your Heroku URL here**
+URL: **https://radiant-temple-24611.herokuapp.com**
 
 SimpleCov Test Coverage: **Insert percentage or link to report here**
 
@@ -36,10 +36,10 @@ The following **required** functionality is complete:
 * [x] User can sign up by providing their email, password, and name.
 * [x] User can login using an email and password.
 * [x] Users can create events.
-* [ ] Users must click "publish event" before an event becomes viewable to other users. 
-* [ ] Users can create ticket types for that event. 
+* [x] Users must click "publish event" before an event becomes viewable to other users.
+* [x] Users can create ticket types for that event.
 * [x] Users can create venues.
-* [ ] An event must have at least one `ticket_type` defined before it can be published. **HINT**: This is a good candidate for a unit test.
+* [x] An event must have at least one `ticket_type` defined before it can be published. **HINT**: This is a good candidate for a unit test.
 * [x] User can see a list of events he or she has created.
 * [x] Users can edit their event after creation. But only the user who created the event can edit the event. **HINT**: This is a good candidate for a controller test.
 

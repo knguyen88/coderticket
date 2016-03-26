@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get 'my_events', to: 'events#my_events'
       post ':id', to: 'events#update'
+      post ':id/publish', to: 'events#publish', as: :publish_event
     end
   end
 
