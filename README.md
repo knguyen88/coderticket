@@ -4,7 +4,7 @@
 
 Submitted by: **Kha Nguyen**
 
-Time spent: **10** hours
+Time spent: **12** hours
 
 URL: **https://radiant-temple-24611.herokuapp.com**
 
@@ -14,11 +14,11 @@ SimpleCov Test Coverage: **Insert percentage or link to report here**
 
 The following **required** functionality is complete:
 
-* [ ] 10 model tests, 2 route tests, 2 controller tests, 2 view tests.
+* [x] 10 model tests, 2 route tests, 2 controller tests, 2 view tests.
 
 #### Events
 
-* [x] Users can see a list of upcoming events. Past events should not be shown. **HINT**: Good candidate for a test.
+* [x] Users can see a list of upcoming events. Past events should not be shown.
 * [x] Users can search for events from the homepage.
 * [x] Users can click on an event to see details about the event.
 * [x] Users can click on "Book Now" to go to a page to purchase tickets.
@@ -27,7 +27,7 @@ The following **required** functionality is complete:
 
 * [x] Each event can have multiple types of tickets, each with a different `price` and `max_quantity`. 
 * [x] Users can buy tickets to an event, choose the types of tickets, and the quantity of tickets.
-* [x] Users cannot buy more tickets than the quantity available. **HINT**: Good candidate for a test.
+* [x] Users cannot buy more tickets than the quantity available.
 * [x] Users can only buy up to 10 of a ticket type at a time.
 * [x] Users cannot buy tickets to events that occur in the past.
 
@@ -39,9 +39,9 @@ The following **required** functionality is complete:
 * [x] Users must click "publish event" before an event becomes viewable to other users.
 * [x] Users can create ticket types for that event.
 * [x] Users can create venues.
-* [x] An event must have at least one `ticket_type` defined before it can be published. **HINT**: This is a good candidate for a unit test.
+* [x] An event must have at least one `ticket_type` defined before it can be published.
 * [x] User can see a list of events he or she has created.
-* [x] Users can edit their event after creation. But only the user who created the event can edit the event. **HINT**: This is a good candidate for a controller test.
+* [x] Users can edit their event after creation. But only the user who created the event can edit the event.
 
 ### Optional Stories
 

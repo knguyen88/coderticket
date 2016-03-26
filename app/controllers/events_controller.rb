@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   before_action :require_login, only: [:new, :my_events, :edit, :update, :publish]
   before_action :load_data_for_event_form, only: [:new, :edit]
-  before_action :find_event, only: [:show, :edit, :publish]
+  before_action :find_event, only: [:show, :edit, :publish, :update]
 
   def index
     @events = Event.where('starts_at >= ? and published = true', Date.today).order(starts_at: 'desc')
@@ -38,8 +38,13 @@ class EventsController < ApplicationController
   end
 
   def update
-    update_event
-    redirect_to event_path(params[:id])
+    if can_edit?(@event)
+      update_event
+      redirect_to event_path(params[:id])
+    else
+      flash[:error] = 'You do not have permission to update this event'
+      redirect_to my_events_events_path
+    end
   end
 
   def publish
@@ -82,10 +87,9 @@ class EventsController < ApplicationController
   end
 
   def update_event
-    event = Event.find(params[:id])
-    event.update(event_params)
-    remove_event_admins(event)
-    create_event_admins(event)
+    @event.update(event_params)
+    remove_event_admins(@event)
+    create_event_admins(@event)
   end
 
   def create_event_admins(event)

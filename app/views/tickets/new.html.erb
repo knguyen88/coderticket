@@ -37,10 +37,10 @@
                 <td><%= type.name %></td>
                 <td><%= number_to_currency(type.price, unit: 'VND ', precision: 0) %></td>
                 <td>
-                  <%= select_tag('quantity',
-                                 options_for_select((type.min_quantity_to_purchase)..(type.max_quantity_to_purchase),
-                                                    class: 'form-control',
-                                                    name: "tickets[#{type.id}]")) %>
+                  <select name="<%= "tickets[#{type.id}]" %>" class="form-control">
+                    <option value="0">0</option>
+                    <%= options_for_select((type.min_quantity_to_purchase)..(type.max_quantity_to_purchase)) %>
+                  </select>
                 </td>
               </tr>
           <% end %>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'events#index'
 
-  resources :events do
-    resources :tickets do
+  resources :events, :except => [:destroy] do
+    resources :tickets, :except => [:destroy, :update]do
       collection do
         post 'buy', to: 'tickets#buy'
       end

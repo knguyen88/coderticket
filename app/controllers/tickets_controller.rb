@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
 
-  before_action :require_login, only: [:new, :create]
+  before_action :require_login, only: [:create]
   before_action :find_event, only: [:new, :buy]
 
   def new
@@ -20,7 +20,7 @@ class TicketsController < ApplicationController
       redirect_to(event_path(event))
     else
       prepare_order
-      flash[:success] = 'You have purchased tickets successfully. Below is your order.'
+      flash.now[:success] = 'You have purchased tickets successfully. Below is your order.'
       render('tickets/buy')
     end
   end

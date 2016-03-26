@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       @user.save
       store_id_and_redirect_to_home(@user)
     else
-      render 'users/register'
+      render 'users/register', layout: 'no_header'
     end
   end
 
