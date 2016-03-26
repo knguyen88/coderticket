@@ -1,4 +1,8 @@
 class EventsController < ApplicationController
+  include EventsHelper
+
+  before_action :load_data_for_event_form, only: [:new, :edit]
+
   def index
     @events = Event.where('starts_at >= ?', Date.today)
   end
@@ -10,9 +14,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @categories = Category.all
-    @venues = Venue.all
-    @admins = User.where('id <> ?', current_user.id)
+    @event = Event.new(hero_image_url: 'https://az810747.vo.msecnd.net/eventcover/2015/10/25/C6A1A5.jpg?w=1040&maxheight=400&mode=crop&anchor=topcenter')
   end
 
   def my_events
@@ -24,20 +26,51 @@ class EventsController < ApplicationController
     redirect_to(my_events_events_path)
   end
 
+  def edit
+    @event = Event.find(params[:id])
+    redirect_to(my_events_events_path) unless can_edit?(@event)
+  end
+
+  def update
+    update_event
+    redirect_to event_path(params[:id])
+  end
+
   private
   def event_params
     params
         .require(:event)
         .permit(:name, :category_id, :extended_html_description, :hero_image_url, :venue_id, :starts_at, :ends_at, :creator_id)
-        .merge(:creator_id => current_user.id)
   end
 
   def create_new_event
-    new_event = Event.create(event_params)
+    new_event = Event.create(event_params.merge(:creator_id => current_user.id))
+    create_event_admins(new_event)
+    new_event
+  end
+
+  def update_event
+    event = Event.find(params[:id])
+    event.update(event_params)
+    remove_event_admins(event)
+    create_event_admins(event)
+  end
+
+  def create_event_admins(event)
     event_admins = []
     params[:event][:admins].try(:each) do |user_id|
-      event_admins << {admin_id: user_id, event_id: new_event.id}
+      event_admins << {admin_id: user_id, event_id: event.id}
     end
     EventAdmin.create(event_admins)
+  end
+
+  def remove_event_admins(event)
+    EventAdmin.where('event_id = ? and admin_id <> ?', event.id, event.creator_id).delete_all
+  end
+
+  def load_data_for_event_form
+    @categories = Category.all
+    @venues = Venue.all
+    @admins = User.where('id <> ?', current_user.id)
   end
 end

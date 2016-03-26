@@ -1,7 +1,7 @@
 <div class='events-header' style='background-image: url(<%= header_background_image_url %>)'></div>
 <div class="container-fluid">
   <div class="col-md-8">
-    <h2>Create a new event</h2>
-    <%= render partial: 'form', locals: {form_method: 'post', form_action: events_path} %>
+    <h2>Editing an event</h2>
+    <%= render partial: 'form', locals: {form_method: 'post', form_action: event_path(@event.id)} %>
   </div>
 </div>

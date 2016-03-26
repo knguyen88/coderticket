@@ -1,0 +1,53 @@
+<form method="<%= form_method %>" action="<%= form_action %>">
+  <%= token_tag %>
+  <div class="form-group">
+    <label for="event[name]">Name</label>
+    <input type="text" class="form-control" id="event[name]" name="event[name]" placeholder="Superbowl" value="<%= @event.name %>"/>
+  </div>
+  <div class="form-group">
+    <label for="event[category_id]">Category</label>
+    <select id="event[category_id]" name="event[category_id]" class="form-control">
+      <% @categories.each do |cat| %>
+          <option <%= cat.id == @event.category.try(:id) ? 'selected' : '' %> value="<%= cat.id %>"><%= cat.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="event[extended_html_description]">Description</label>
+        <textarea id="event[extended_html_description]" name="event[extended_html_description]"
+                  placeholder="Super awesome tournament" class="form-control"><%= @event.extended_html_description %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="event[hero_image_url]">Image</label>
+    <input type="text" class="form-control" id="event[hero_image_url]" name="event[hero_image_url]"
+           placeholder="www.google.com"
+           value="<%= @event.hero_image_url %>"/>
+  </div>
+  <div class="form-group">
+    <label for="event[venue_id]">Venue</label>
+    <select id="event[venue_id]" name="event[venue_id]" class="form-control">
+      <% @venues.each do |venue| %>
+          <option <%= venue.id == @event.venue.try(:id) ? 'selected' : '' %> value="<%= venue.id %>"><%= venue.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="event[starts_at]">Start</label>
+    <input type="date" class="form-control" id="event[starts_at]" name="event[starts_at]" value="<%= @event.starts_at.try(:strftime, '%Y-%m-%d') %>"/>
+  </div>
+  <div class="form-group">
+    <label for="event[ends_at]">End</label>
+    <input type="date" class="form-control" id="event[ends_at]" name="event[ends_at]" value="<%= @event.ends_at.try(:strftime, '%Y-%m-%d') %>"/>
+  </div>
+  <div class="form-group">
+    <label for="event[admins]">Venue</label>
+    <select id="event[admins]" name="event[admins][]" class="form-control" multiple>
+      <% @admins.each do |admin| %>
+          <option <%= @event.admins.ids.include?(admin.id) ? 'selected' : '' %> value="<%= admin.id %>"><%= admin.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>

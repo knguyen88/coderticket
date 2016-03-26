@@ -4,7 +4,7 @@
 
 Submitted by: **Kha Nguyen**
 
-Time spent: **5** hours
+Time spent: **6** hours
 
 URL: **Insert your Heroku URL here**
 
@@ -41,7 +41,7 @@ The following **required** functionality is complete:
 * [x] Users can create venues.
 * [ ] An event must have at least one `ticket_type` defined before it can be published. **HINT**: This is a good candidate for a unit test.
 * [x] User can see a list of events he or she has created.
-* [ ] Users can edit their event after creation. But only the user who created the event can edit the event. **HINT**: This is a good candidate for a controller test.
+* [x] Users can edit their event after creation. But only the user who created the event can edit the event. **HINT**: This is a good candidate for a controller test.
 
 ### Optional Stories
 
