@@ -5,8 +5,15 @@
         <div class="card-block">
           <h4 class="card-title">
             <%= event.name %>
-            <% if event.starts_at < Date.today %>
-                <span class="label label-danger">Outdated</span>
+            <% if action_name == 'my_events' %>
+                <% if event.starts_at < Date.today %>
+                    <span class="label label-danger">Outdated</span>
+                <% end %>
+                <% if event.published? %>
+                    <span class="label label-success">Published</span>
+                <% else %>
+                    <span class="label label-default">Draft</span>
+                <% end %>
             <% end %>
           </h4>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's

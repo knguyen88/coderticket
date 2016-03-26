@@ -4,12 +4,18 @@ class EventsController < ApplicationController
   before_action :load_data_for_event_form, only: [:new, :edit]
 
   def index
-    @events = Event.where('starts_at >= ? and published = true', Date.today)
+    @events = Event.where('starts_at >= ? and published = true', Date.today).order(starts_at: 'desc')
+    if params[:search]
+      @events = @events.where('name like ?', "%#{params[:search]}%")
+    end
   end
 
   def show
     @event = Event.find(params[:id])
-    @related_events = Event.joins(:category).joins(:venue).joins('inner join regions on regions.id = venues.region_id')
+    @related_events = Event
+                          .joins(:category)
+                          .joins(:venue)
+                          .joins('inner join regions on regions.id = venues.region_id')
                           .where('events.id <> ? and regions.id = ? and categories.id = ?', @event.id, @event.venue.region_id, @event.category.id)
   end
 
@@ -18,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    @events = current_user.managing_events
+    @events = current_user.managing_events.order(starts_at: 'desc')
   end
 
   def create
