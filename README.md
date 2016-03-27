@@ -53,6 +53,10 @@ The following **required** functionality is complete:
 * [ ] Events are automatically labeled as "Hot". "Hot" events should have a red border or some sort of visual flourish. The event title should also be prefixed with "**HOT:**".
 * [ ] Instead of showing all of the events on the main page, an "admin" user can dictate the events that show up on the main page.
 
+## Walkthrough
+
+![Video Walkthrough](walkthrougth.gif)
+
 ## Notes
 
 Describe any challenges encountered while building the app.
