@@ -4,6 +4,7 @@ class TicketsController < ApplicationController
   before_action :find_event, only: [:new, :buy]
 
   def new
+    redirect_to root_path unless @event.published? && !@event.outdated?
   end
 
   def create

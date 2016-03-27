@@ -19,7 +19,7 @@
             </div>
             <div class="clearfix"></div>
         <% end %>
-        <% if @event.published? %>
+        <% if @event.published? && !@event.outdated? %>
             <%= link_to new_event_ticket_path(@event) do %>
                 <button class='btn btn-lg btn-block btn-danger'> BOOK NOW</button>
             <% end %>
