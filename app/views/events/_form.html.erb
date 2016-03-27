@@ -40,7 +40,7 @@
     <input type="date" class="form-control" id="event[ends_at]" name="event[ends_at]" value="<%= @event.ends_at.try(:strftime, '%Y-%m-%d') %>"/>
   </div>
   <div class="form-group">
-    <label for="event[admins]">Venue</label>
+    <label for="event[admins]">Admins</label>
     <select id="event[admins]" name="event[admins][]" class="form-control" multiple>
       <% @admins.each do |admin| %>
           <option <%= @event.admins.ids.include?(admin.id) ? 'selected' : '' %> value="<%= admin.id %>"><%= admin.name %></option>
